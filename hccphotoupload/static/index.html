@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href='//fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" />
+		<link rel="stylesheet" type="text/css" href="/static/style.css" />
+		<title>HCC Photo Upload</title>
+	</head>
+	<body>
+		<div class="header">
+			<span>Harvest Community Church Photo Upload Box</span>
+			<p>
+				Help Harvest Community celebrate its 20th anniversary by
+				submitting photos for a slideshow! Simply drag photos you have
+				into the box below, or click the box to select photos from your
+				computer. You may also upload from a smartphone!
+			</p>
+		</div>
+		<div class="container">
+			<div class="dropzone"></div>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.js"></script>
+		<script>
+		var dz = new Dropzone("div.dropzone", {
+			url: "/upload",
+			dictDefaultMessage: "Click here or drag photos here to upload!",
+			dictFallbackMessage: "Click here to upload photos!",
+			acceptedFiles: "image/jpeg,image/pjpeg,image/gif,image/png,image/tiff,image/x-tiff",
+			maxFilesize: 20
+		});
+		</script>
+	</body>
+</html>
