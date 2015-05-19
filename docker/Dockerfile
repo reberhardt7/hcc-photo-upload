@@ -11,7 +11,7 @@ RUN apt-get install -y vim
 RUN apt-get install -y nano
 
 # Install basic requirements
-RUN apt-get install -y supervisor nginx uwsgi uwsgi-plugin-python python-setuptools libmagic-dev git
+RUN apt-get install -y build-essential python-dev supervisor nginx uwsgi uwsgi-plugin-python python-setuptools libmagic-dev git
 RUN easy_install virtualenv uwsgi pyramid distribute
 
 # Set system time
@@ -21,6 +21,7 @@ RUN dpkg-reconfigure --frontend noninteractive tzdata
 # Configure nginx
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 ADD hcc.conf /etc/nginx/conf.d/hcc.conf
+RUN rm /etc/nginx/sites-enabled/default
 RUN mkdir -p /var/log/nginx/hcc
 RUN groupadd uwsgi
 RUN useradd uwsgi -g uwsgi
