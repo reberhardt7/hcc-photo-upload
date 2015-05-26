@@ -42,9 +42,11 @@ def upload(request):
     # Save uploaded file
     input_file = request.POST['file'].file
     input_file.seek(0)
-    if not os.path.exists('uploads'):
-        os.makedirs('uploads')
-    upload_path = os.path.join('uploads', str(photo.id))
+    if not os.path.exists('data'):
+        os.makedirs('data')
+    if not os.path.exists('data/uploads'):
+        os.makedirs('data/uploads')
+    upload_path = os.path.join('data', 'uploads', str(photo.id))
     with open(upload_path, 'w') as f:
         shutil.copyfileobj(input_file, f)
 

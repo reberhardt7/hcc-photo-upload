@@ -43,7 +43,7 @@ RUN python /srv/hcc-photo-upload/setup.py develop
 ADD update.sh /srv/update.sh
 RUN chmod +x /srv/update.sh
 RUN touch /srv/uwsgi.log
-RUN mkdir /srv/hcc-photo-upload/uploads
+RUN mkdir -p /srv/hcc-photo-upload/data/uploads
 RUN chown -R uwsgi /srv/hcc-photo-upload /srv/uwsgi.log
 
 # Run supervisor
@@ -58,4 +58,4 @@ ENTRYPOINT ["python", "/start.py"]
 # To run the built image (maps port 80 on host to 80 of container):
 # docker run -d -p 80:80 hcc/hcc-photo-upload
 # To use a data directory:
-# docker run -d -v /home/user/hcc-photos:/srv/hcc-photo-upload/uploads hcc/hcc-photo-upload
+# docker run -d -v /home/user/hcc-photos:/srv/hcc-photo-upload/data hcc/hcc-photo-upload

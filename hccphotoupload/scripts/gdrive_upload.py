@@ -91,7 +91,7 @@ def upload_photos():
                 extension = {'image/jpeg': '.jpg', 'image/pjpeg': '.jpg',
                              'image/gif': '.gif', 'image/png': '.png',
                              'image/tiff': '.tiff', 'image/x-tiff': '.tiff'}[photo.content_type]
-                media_body = MediaFileUpload(os.path.join('uploads', str(photo.id) + extension), mimetype=photo.content_type, resumable=True)
+                media_body = MediaFileUpload(os.path.join('data', 'uploads', str(photo.id) + extension), mimetype=photo.content_type, resumable=True)
                 body = {
                   'title': '{}-{}{}'.format(photo.id, re.sub(r'[^\w\d\-_]', '_', photo.original_filename.rsplit('.', 1)[0]), extension),
                   'description': '{} uploaded by {} on {}'.format(photo.original_filename, photo.uploader_ip, photo.date_uploaded.strftime('%B %d, %Y %I:%M:%S %p')),
@@ -103,9 +103,9 @@ def upload_photos():
                 with transaction.manager:
                     photo.uploaded_to_gdrive = True
                     DBSession.add(photo)
-                os.remove(os.path.join('uploads', str(photo.id) + extension))
+                os.remove(os.path.join('data', 'uploads', str(photo.id) + extension))
 
-            orphaned_files = [f for f in os.listdir('uploads') if not f.startswith('.')]
+            orphaned_files = [f for f in os.listdir('data', 'uploads') if not f.startswith('.')]
             if orphaned_files:
                 log.warn('Warning: The following uploaded files have been orphaned in the database: %s' % orphaned_files)
 
