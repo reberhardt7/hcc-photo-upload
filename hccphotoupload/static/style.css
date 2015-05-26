@@ -6,25 +6,40 @@ body {
 }
 
 .header {
-	background-color: #D01414;
+	background-color: #b00f0f;
+	background-image: url("asfalt-dark.png");
 	color: #fff;
 	text-align: center;
-	padding-top: 2em;
-	padding-bottom: 1.5em;
+	padding-top: 1em;
+	padding-bottom: 0.5em;
 	margin-bottom: 1.5em;
 	padding-left: 1em;
 	padding-right: 1em;
 }
 
-.header > span {
+.container > span {
+	display: block;
+	margin-top: 1em;
 	font-size: 2em;
 	max-width: 800px;
+	padding-left: 1em;
+	padding-right: 1em;
 }
 
-.header > p {
+.container > p {
 	margin-left: auto;
 	margin-right: auto;
 	max-width: 800px;
+	text-align: justify;
+	margin-top: 1.5em;
+	margin-bottom: 2em;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.header img {
+	width: 30em;
+	max-width: 100%;
 }
 
 .container {
@@ -32,11 +47,14 @@ body {
 	margin-right: auto;
 	width: 100%;
 	max-width: 800px;
+	text-align: center;
 }
 
 .dropzone {
+	display: block;
 	margin-left: 1em;
 	margin-right: 1em;
+	margin-bottom: 1em;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
