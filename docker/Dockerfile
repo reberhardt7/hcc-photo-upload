@@ -32,6 +32,7 @@ EXPOSE 80
 # Add supervisord configuration files
 ADD supervisor_config/nginx.conf /etc/supervisor/conf.d/nginx.conf
 ADD supervisor_config/hcc.conf /etc/supervisor/conf.d/hcc.conf
+ADD supervisor_config/hcc-gdrive.conf /etc/supervisor/conf.d/hcc-gdrive.conf
 
 # Set up Python/Pyramid environment
 RUN mkdir -p /srv

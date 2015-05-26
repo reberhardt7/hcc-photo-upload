@@ -2,6 +2,14 @@ import sys
 import os
 import shutil
 
+if 'GOOGLE_CLIENT_ID' not in os.environ \
+	or 'GOOGLE_CLIENT_SECRET' not in os.environ \
+	or 'GOOGLE_TARGET_FOLDERNAME' not in os.environ \
+	or 'OAUTH_CALLBACK_PATH' not in os.environ:
+	raise Exception('Error! The GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, '
+		+ 'GOOGLE_TARGET_FOLDERNAME, and OAUTH_CALLBACK_PATH environment '
+		+ 'variables must all be specified.')
+
 def run(command):
     if os.system(command) is not 0:
         raise Exception('Error! "%s" returned non-zero error code' % command)

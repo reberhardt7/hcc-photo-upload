@@ -16,6 +16,7 @@ requires = [
     'zope.sqlalchemy',
     'waitress',
     'python-magic',
+    'google-api-python-client',
     ]
 
 setup(name='hcc-photo-upload',
@@ -42,5 +43,6 @@ setup(name='hcc-photo-upload',
       main = hccphotoupload:main
       [console_scripts]
       initialize_hcc-photo-upload_db = hccphotoupload.scripts.initializedb:main
+      hcc-upload-gdrive = hccphotoupload.scripts.gdrive_upload:main
       """,
       )
